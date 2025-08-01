@@ -44,7 +44,7 @@ def rag_pipeline(query):
     """
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}]
     )
      # Access the content correctly
