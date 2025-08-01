@@ -8,7 +8,7 @@ client = OpenAI()
 import os
 
 # --- Load credentials from environment ---
-openai.api_key = os.getenv("OPENAI_API_KEY")
+#openai.api_key = os.getenv("OPENAI_API_KEY")
 cloud_id = os.getenv("ES_CLOUD_ID")
 es_username = os.getenv("ES_USERNAME")
 es_password = os.getenv("ES_PASSWORD")
