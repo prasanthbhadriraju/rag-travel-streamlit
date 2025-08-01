@@ -3,7 +3,8 @@
 import streamlit as st
 from sentence_transformers import SentenceTransformer
 from elasticsearch import Elasticsearch
-import openai
+from openai import OpenAI
+client = OpenAI()
 import os
 
 # --- Load credentials from environment ---
@@ -42,11 +43,13 @@ Given the descriptions below:
 Answer the user's query: "{query}"
 """
 
-    reply = openai.ChatCompletion.create(
+ response = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}]
     )
-    return reply["choices"][0]["message"]["content"].strip()
+     # Access the content correctly
+    answer = response.choices[0].message.content
+    return answer
 
 # --- Streamlit UI ---
 st.set_page_config(page_title="🧳 Travel Advisor RAG", layout="centered")
