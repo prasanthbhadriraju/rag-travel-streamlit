@@ -48,8 +48,8 @@ response = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}]
 )
      # Access the content correctly
-    answer = response.choices[0].message.content
-    return answer
+answer = response.choices[0].message.content
+return answer
 
 # --- Streamlit UI ---
 st.set_page_config(page_title="🧳 Travel Advisor RAG", layout="centered")
