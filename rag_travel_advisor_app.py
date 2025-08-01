@@ -35,21 +35,21 @@ def rag_pipeline(query):
     passages = [hit["_source"]["summary"] for hit in response["hits"]["hits"]]
 
     prompt = f"""
-You are a travel advisor specializing in offbeat Indian destinations.
-Given the descriptions below:
+    You are a travel advisor specializing in offbeat Indian destinations.
+    Given the descriptions below:
 
-{chr(10).join(passages)}
+    {chr(10).join(passages)}
 
-Answer the user's query: "{query}"
-"""
+    Answer the user's query: "{query}"
+    """
 
-response = client.chat.completions.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}]
-)
+    )
      # Access the content correctly
-answer = response.choices[0].message.content
-return answer
+    answer = response.choices[0].message.content
+    return answer
 
 # --- Streamlit UI ---
 st.set_page_config(page_title="🧳 Travel Advisor RAG", layout="centered")
